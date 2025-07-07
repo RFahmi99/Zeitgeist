@@ -1,0 +1,129 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonomous-blog-system"
+version = "2.0.0"
+description = "AI-powered autonomous blog content generation and publishing system"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Rayed Fahmi", email = "rayedfahmi99@gmail.com"},
+]
+maintainers = [
+    {name = "Rayed Fahmi", email = "rayedfahmi99@gmail.com"},
+]
+keywords = ["blog", "automation", "ai", "content-generation", "publishing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    # Note: Add your actual dependencies here from requirements.txt
+    # This section replaces the read_requirements() function
+]
+dynamic = ["dependencies"]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/autonomous-blog-system"
+"Bug Reports" = "https://github.com/yourusername/autonomous-blog-system/issues"
+"Source" = "https://github.com/yourusername/autonomous-blog-system"
+"Documentation" = "https://github.com/yourusername/autonomous-blog-system#readme"
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "flake8", "mypy"]
+docs = ["sphinx", "sphinx-rtd-theme"]
+test = ["pytest", "pytest-cov"]
+quality = ["black", "flake8", "mypy", "ruff"]
+
+[project.scripts]
+blog-system = "main:main"
+blog-generate = "src.scheduler.schedule:auto_blog_task"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+templates = ["*.html"]
+static_site = ["*.html", "*.css", "*.js"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+# Development tool configurations
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [".git", "__pycache__", "dist", "build", ".eggs"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/tests/*", "*/test_*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]

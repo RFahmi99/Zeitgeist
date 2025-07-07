@@ -246,7 +246,7 @@ POST /shutdown             # Graceful shutdown
 
 ## 🤝 Contributing
 
-We welcome contributions! See our [Contributing Guide](contributing.md) for:
+We welcome contributions! See our [Contributing Guide](CONTRIBUTING.md) for:
 
 - **Development setup** and workflow
 - **Code standards** and testing requirements  

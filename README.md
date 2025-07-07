@@ -55,6 +55,9 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
+# Install project in editable mode (recommended for development)
+pip install -e .
+
 # Install and setup Ollama
 ollama pull mistral
 
@@ -127,14 +130,18 @@ zeitgeist/
 │   │   ├── health_check.py          # Health monitoring
 │   │   ├── metrics.py               # Performance metrics
 │   │   └── alerts.py                # Alert management
-│   └── 📁 maintenance/              # System utilities
-│       ├── backup.py                # Automated backups
-│       └── monitor.py               # CLI monitoring tools
-├── 📁 templates/                    # HTML templates
+│   ├── 📁 maintenance/              # System utilities
+│   │   ├── backup.py                # Automated backups
+│   │   └── monitor.py               # CLI monitoring tools
+│   └──📁 templates/                 # HTML templates
+│       ├── dashboard.html           # Real-time analytics dashboard interface
+│       └── template.html            # Base HTML template for generated content
 ├── 📁 docs/                         # Documentation
 ├── 📄 main.py                       # Application entry point
 ├── 📄 config.py                     # Configuration management
 ├── 📄 security_enhancements.py      # Security features
+├── 📄 .env                          # Environment variables & API keys    
+├── 📄 pyproject.toml                # Python project metadata & build config
 └── 📄 requirements.txt              # Dependencies
 ```
 

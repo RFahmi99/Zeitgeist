@@ -59,7 +59,6 @@ pip install -r requirements.txt
 ollama pull mistral
 
 # Configure environment
-cp env.txt .env
 # Edit .env with your API keys (Reddit, Notion, etc.)
 
 # Run single content cycle
